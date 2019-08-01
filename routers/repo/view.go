@@ -211,6 +211,16 @@ func renderFile(ctx *context.Context, entry *git.TreeEntry, treeLink, rawLink st
 	fileSize := blob.Size()
 	ctx.Data["FileSize"] = fileSize
 	ctx.Data["FileName"] = blob.Name()
+
+	var isIPyNB = strings.HasSuffix(blob.Name(), ".ipynb")
+	var maxFileSize = setting.UI.MaxDisplayFileSize;
+	if isIPyNB {
+		maxFileSize = setting.UI.MaxDisplayIPyNBSize
+	}
+	ctx.Data["IsIPyNB"] = isIPyNB
+
+	fmt.Printf("Name: %v, is: %v\n", blob.Name(), isIPyNB)
+
 	ctx.Data["HighlightClass"] = highlight.FileNameToHighlightClass(blob.Name())
 	ctx.Data["RawFileLink"] = rawLink + "/" + ctx.Repo.TreePath
 
@@ -221,6 +231,8 @@ func renderFile(ctx *context.Context, entry *git.TreeEntry, treeLink, rawLink st
 	isTextFile := base.IsTextFile(buf)
 	isLFSFile := false
 	ctx.Data["IsTextFile"] = isTextFile
+
+
 
 	//Check for LFS meta file
 	if isTextFile && setting.LFS.StartServer {
@@ -272,7 +284,7 @@ func renderFile(ctx *context.Context, entry *git.TreeEntry, treeLink, rawLink st
 
 	switch {
 	case isTextFile:
-		if fileSize >= setting.UI.MaxDisplayFileSize {
+		if fileSize >= maxFileSize {
 			ctx.Data["IsFileTooLarge"] = true
 			break
 		}

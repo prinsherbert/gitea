@@ -22,6 +22,14 @@
 
 	</script>
 
+	{{if .IsIPyNB }}
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js"></script>
+		<script src="{{AppSubUrl}}/vendor/plugins/notebookjs/notebook.min.js"></script>
+	{{end}}
+
 	<meta name="theme-color" content="{{ThemeColorMetaTag}}">
 	<meta name="author" content="{{if .Repository}}{{.Owner.Name}}{{else}}{{MetaAuthor}}{{end}}" />
 	<meta name="description" content="{{if .Repository}}{{.Repository.Name}}{{if .Repository.Description}} - {{.Repository.Description}}{{end}}{{else}}{{MetaDescription}}{{end}}" />

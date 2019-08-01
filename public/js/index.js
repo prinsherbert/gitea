@@ -3124,3 +3124,21 @@ function onOAuthLoginClick() {
         oauthNav.show();
     },5000);
 }
+
+/* Used to render ipython/jupyter notebooks */
+function renderNotebook(raw_file_link) {
+    $.getJSON(raw_file_link, null, function(notebook_json) {
+        $(".notebook p").remove();
+        var notebook = nb.parse(notebook_json);
+        var rendered = notebook.render();
+        $(".notebook").append(rendered);
+        $(".notebook code").each(function(i, block) {
+            $(block).addClass("py").addClass("python");
+            hljs.highlightBlock(block);
+        });
+
+        $(".notebook .nb-markdown-cell").each(function(i, markdown) {
+            $(markdown).html(marked($(markdown).html()));
+        });
+    });
+};

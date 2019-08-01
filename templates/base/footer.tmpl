@@ -129,6 +129,13 @@
 		initHeatmap('user-heatmap', '{{.HeatmapUser}}');
 	</script>
 {{end}}
+
+{{if .IsIPyNB }}
+	<script type="text/javascript">
+		renderNotebook("{{.RawFileLink}}")
+	</script>
+{{end}}
+
 {{template "custom/footer" .}}
 </body>
 </html>

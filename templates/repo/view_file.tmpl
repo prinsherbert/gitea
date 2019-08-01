@@ -45,11 +45,13 @@
 		</div>
 	</h4>
 	<div class="ui attached table unstackable segment">
-		<div class="file-view {{if .IsMarkup}}markdown{{else if .IsRenderedHTML}}plain-text{{else if .IsTextFile}}code-view{{end}} has-emoji">
+		<div class="file-view {{if .IsMarkup}}markdown{{else if .IsRenderedHTML}}plain-text{{else if .IsIPyNB}}notebook{{else if .IsTextFile}}code-view{{end}} has-emoji">
 			{{if .IsMarkup}}
 				{{if .FileContent}}{{.FileContent | Safe}}{{end}}
 			{{else if .IsRenderedHTML}}
 				<pre>{{if .FileContent}}{{.FileContent | Str2html}}{{end}}</pre>
+			{{else if .IsIPyNB}}
+				<p class="nb-rendering">Notebook still rendering</p>
 			{{else if not .IsTextFile}}
 				<div class="view-raw ui center">
 					{{if .IsImageFile}}

@@ -169,6 +169,7 @@ var (
 		ReactionMaxUserNum  int
 		ThemeColorMetaTag   string
 		MaxDisplayFileSize  int64
+		MaxDisplayIPyNBSize int64
 		ShowUserEmail       bool
 		DefaultShowFullName bool
 		DefaultTheme        string
@@ -198,6 +199,7 @@ var (
 		ReactionMaxUserNum:  10,
 		ThemeColorMetaTag:   `#6cc644`,
 		MaxDisplayFileSize:  8388608,
+		MaxDisplayIPyNBSize: 134217728, // approx 128 MB, or 2^27 bytes.
 		DefaultTheme:        `gitea`,
 		Themes:              []string{`gitea`, `arc-green`},
 		Admin: struct {

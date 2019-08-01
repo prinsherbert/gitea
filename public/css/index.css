@@ -1011,3 +1011,22 @@ tbody.commit-list{vertical-align:baseline}
 .comment-code-cloud button.comment-form-reply{margin:.5em .5em .5em 4.5em}
 .comment-code-cloud form.comment-form-reply{margin:0 0 0 4em}
 .file-comment{font:12px 'SF Mono',Consolas,Menlo,'Liberation Mono',Monaco,'Lucida Console',monospace;color:rgba(0,0,0,.87)}
+.notebook:not(code){overflow:hidden;font-size:16px;line-height:1.6!important;word-wrap:break-word}
+.notebook:not(code).file-view{margin:0}
+.notebook:not(code).file-view .nb-rendering{padding:50px;font-size:24pt;text-align:center}
+.notebook:not(code).file-view .nb-notebook{line-height:1.5}
+.notebook:not(code).file-view .nb-stderr,.notebook:not(code).file-view .nb-stdout{white-space:pre-wrap;margin:1em 0;padding:.1em .5em}
+.notebook:not(code).file-view .nb-stderr{background-color:#faa}
+.notebook:not(code).file-view .nb-cell+.nb-cell{margin-top:.5em}
+.notebook:not(code).file-view .nb-output table{border:1px solid #000;border-collapse:collapse}
+.notebook:not(code).file-view .nb-output th{font-weight:700}
+.notebook:not(code).file-view .nb-output td,.notebook:not(code).file-view .nb-output th{border:1px solid #000;padding:.25em;text-align:left;vertical-align:middle;border-collapse:collapse}
+.notebook:not(code).file-view .nb-cell{position:relative;padding:11.5px 10px 19.5px 50px;margin:10px;border:solid 1px #ccc}
+.notebook:not(code).file-view .nb-raw-cell{white-space:pre-wrap;background-color:#f5f2f0;font-family:Consolas,Monaco,'Andale Mono',monospace;padding:1em;margin:.5em 0}
+.notebook:not(code).file-view .nb-output{min-height:1em;width:100%;overflow-x:scroll;border-top:1px #ccc}
+.notebook:not(code).file-view .nb-output img{max-width:100%}
+.notebook:not(code).file-view .nb-input:before,.notebook:not(code).file-view .nb-output:before{position:absolute;font-family:monospace;color:#999;left:-7.5em;width:7em;text-align:right}
+.notebook:not(code).file-view .nb-input:before{content:"In [" attr(data-prompt-number) "]:"}
+.notebook:not(code).file-view .nb-output:before{content:"Out [" attr(data-prompt-number) "]:"}
+.notebook:not(code).file-view .nb-markdown-cell{background-color:#fafafa}
+.notebook:not(code).file-view div[style="max-height:1000px;max-width:1500px;overflow:auto;"]{max-height:none!important}
